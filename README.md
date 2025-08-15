@@ -2,7 +2,7 @@
 
 # FastFibCode
 Ultra-fast [Fibonacci encoding/decoding](https://en.wikipedia.org/wiki/Fibonacci_coding) methods.
-The implementation is based on the [Fast Fibonacci Encoding Algorithm](https://ceur-ws.org/Vol-567/paper14.pdf) and the [The Fast Fibonacci Decompression Algorithm](https://arxiv.org/pdf/0712.0811), with additional optimizations to achieve even better performance. Encoding is **5–20** times faster than the conventional algorithm, and decoding is **10–30** times faster (depending on the value distribution).
+The implementation is based on the [Fast Fibonacci Encoding Algorithm](https://ceur-ws.org/Vol-567/paper14.pdf) and the [The Fast Fibonacci Decompression Algorithm](https://arxiv.org/pdf/0712.0811), with additional optimizations to achieve even better performance. It is **10–30** times faster than the conventional algorithm (depending on the value distribution).
 
 # Basic usage
 
@@ -110,33 +110,32 @@ Intel Core i7-6700HQ CPU 2.60GHz (Skylake), 1 CPU, 8 logical and 4 physical core
 ```
 | Method             | Distribution      | Mean       | Error     | StdDev    | Median     | Ratio | RatioSD |
 |------------------- |------------------ |-----------:|----------:|----------:|-----------:|------:|--------:|
-| EncodeConventional | FoldedNormal_100  |  38.502 ms | 0.7226 ms | 0.6759 ms |  38.627 ms |  1.00 |    0.02 |
-| EncodeFast         | FoldedNormal_100  |   1.578 ms | 0.0545 ms | 0.1590 ms |   1.505 ms |  0.04 |    0.00 |
-| EncodeConventional | FoldedNormal_1K   |  53.121 ms | 1.0194 ms | 1.2893 ms |  53.399 ms |  1.00 |    0.03 |
-| EncodeFast         | FoldedNormal_1K   |   3.425 ms | 0.0665 ms | 0.0792 ms |   3.445 ms |  0.06 |    0.00 |
-| EncodeConventional | FoldedNormal_10K  |  69.517 ms | 0.6760 ms | 0.6323 ms |  69.586 ms |  1.00 |    0.01 |
-| EncodeFast         | FoldedNormal_10K  |   9.399 ms | 0.0760 ms | 0.0593 ms |   9.408 ms |  0.14 |    0.00 |
-| EncodeConventional | FoldedNormal_100K |  83.362 ms | 1.6621 ms | 1.9141 ms |  83.686 ms |  1.00 |    0.03 |
-| EncodeFast         | FoldedNormal_100K |   9.326 ms | 0.1662 ms | 0.1555 ms |   9.318 ms |  0.11 |    0.00 |
-| EncodeConventional | FoldedNormal_1M   |  96.797 ms | 1.9266 ms | 1.9785 ms |  96.614 ms |  1.00 |    0.03 |
-| EncodeFast         | FoldedNormal_1M   |   9.282 ms | 0.1066 ms | 0.0998 ms |   9.324 ms |  0.10 |    0.00 |
-| EncodeConventional | FoldedNormal_10M  | 111.931 ms | 2.0003 ms | 1.9646 ms | 111.899 ms |  1.00 |    0.02 |
-| EncodeFast         | FoldedNormal_10M  |  17.811 ms | 0.3399 ms | 0.2838 ms |  17.809 ms |  0.16 |    0.00 |
-| EncodeConventional | Exponential_100   |  33.897 ms | 0.5218 ms | 0.6408 ms |  33.766 ms |  1.00 |    0.03 |
-| EncodeFast         | Exponential_100   |   1.501 ms | 0.0299 ms | 0.0625 ms |   1.491 ms |  0.04 |    0.00 |
-| EncodeConventional | Exponential_1K    |  51.299 ms | 0.5524 ms | 0.4897 ms |  51.185 ms |  1.00 |    0.01 |
-| EncodeFast         | Exponential_1K    |   2.756 ms | 0.0545 ms | 0.1125 ms |   2.758 ms |  0.05 |    0.00 |
-| EncodeConventional | Exponential_10K   |  65.541 ms | 1.2765 ms | 1.7041 ms |  65.485 ms |  1.00 |    0.04 |
-| EncodeFast         | Exponential_10K   |   9.293 ms | 0.1809 ms | 0.1777 ms |   9.280 ms |  0.14 |    0.00 |
-| EncodeConventional | Exponential_100K  |  78.653 ms | 1.4803 ms | 1.7047 ms |  78.794 ms |  1.00 |    0.03 |
-| EncodeFast         | Exponential_100K  |   9.292 ms | 0.1714 ms | 0.1603 ms |   9.240 ms |  0.12 |    0.00 |
-| EncodeConventional | Exponential_1M    |  94.293 ms | 1.8825 ms | 2.0143 ms |  94.042 ms |  1.00 |    0.03 |
-| EncodeFast         | Exponential_1M    |   9.439 ms | 0.1774 ms | 0.3461 ms |   9.342 ms |  0.10 |    0.00 |
-| EncodeConventional | Exponential_10M   | 110.468 ms | 2.1560 ms | 2.1175 ms | 110.368 ms |  1.00 |    0.03 |
-| EncodeFast         | Exponential_10M   |  17.423 ms | 0.1855 ms | 0.1822 ms |  17.434 ms |  0.16 |    0.00 |
-| EncodeConventional | Uniform_5M        | 102.580 ms | 1.9180 ms | 2.0522 ms | 101.648 ms |  1.00 |    0.03 |
-| EncodeFast         | Uniform_5M        |   9.038 ms | 0.1758 ms | 0.1727 ms |   8.992 ms |  0.09 |    0.00 |
-
+| EncodeConventional | FoldedNormal_100  |  39.102 ms | 0.7629 ms | 0.8163 ms |  38.901 ms |  1.00 |    0.03 |
+| EncodeFast         | FoldedNormal_100  |   1.542 ms | 0.0557 ms | 0.1607 ms |   1.489 ms |  0.04 |    0.00 |
+| EncodeConventional | FoldedNormal_1K   |  54.080 ms | 1.0371 ms | 1.2346 ms |  53.907 ms |  1.00 |    0.03 |
+| EncodeFast         | FoldedNormal_1K   |   2.906 ms | 0.0506 ms | 0.0846 ms |   2.902 ms |  0.05 |    0.00 |
+| EncodeConventional | FoldedNormal_10K  |  69.528 ms | 1.2526 ms | 1.1716 ms |  69.309 ms |  1.00 |    0.02 |
+| EncodeFast         | FoldedNormal_10K  |   4.413 ms | 0.0856 ms | 0.1083 ms |   4.424 ms |  0.06 |    0.00 |
+| EncodeConventional | FoldedNormal_100K |  84.035 ms | 1.5328 ms | 1.5055 ms |  84.026 ms |  1.00 |    0.02 |
+| EncodeFast         | FoldedNormal_100K |   3.906 ms | 0.0746 ms | 0.0944 ms |   3.898 ms |  0.05 |    0.00 |
+| EncodeConventional | FoldedNormal_1M   |  98.920 ms | 1.8442 ms | 1.7251 ms |  98.421 ms |  1.00 |    0.02 |
+| EncodeFast         | FoldedNormal_1M   |   3.941 ms | 0.0776 ms | 0.0924 ms |   3.958 ms |  0.04 |    0.00 |
+| EncodeConventional | FoldedNormal_10M  | 114.072 ms | 1.8719 ms | 1.7510 ms | 114.155 ms |  1.00 |    0.02 |
+| EncodeFast         | FoldedNormal_10M  |   8.203 ms | 0.1287 ms | 0.1264 ms |   8.207 ms |  0.07 |    0.00 |
+| EncodeConventional | Exponential_100   |  35.178 ms | 0.6949 ms | 1.1611 ms |  34.747 ms |  1.00 |    0.05 |
+| EncodeFast         | Exponential_100   |   1.537 ms | 0.0385 ms | 0.1092 ms |   1.509 ms |  0.04 |    0.00 |
+| EncodeConventional | Exponential_1K    |  51.469 ms | 0.9935 ms | 1.0203 ms |  51.420 ms |  1.00 |    0.03 |
+| EncodeFast         | Exponential_1K    |   2.369 ms | 0.0456 ms | 0.0856 ms |   2.371 ms |  0.05 |    0.00 |
+| EncodeConventional | Exponential_10K   |  65.755 ms | 1.1349 ms | 1.0616 ms |  65.705 ms |  1.00 |    0.02 |
+| EncodeFast         | Exponential_10K   |   5.003 ms | 0.0986 ms | 0.1211 ms |   4.995 ms |  0.08 |    0.00 |
+| EncodeConventional | Exponential_100K  |  80.600 ms | 1.2722 ms | 1.1900 ms |  80.906 ms |  1.00 |    0.02 |
+| EncodeFast         | Exponential_100K  |   4.007 ms | 0.0782 ms | 0.0931 ms |   4.004 ms |  0.05 |    0.00 |
+| EncodeConventional | Exponential_1M    |  95.661 ms | 1.5023 ms | 1.3317 ms |  95.957 ms |  1.00 |    0.02 |
+| EncodeFast         | Exponential_1M    |   3.930 ms | 0.0757 ms | 0.1086 ms |   3.924 ms |  0.04 |    0.00 |
+| EncodeConventional | Exponential_10M   | 110.287 ms | 1.8801 ms | 1.7587 ms | 110.172 ms |  1.00 |    0.02 |
+| EncodeFast         | Exponential_10M   |   8.518 ms | 0.1262 ms | 0.1596 ms |   8.490 ms |  0.08 |    0.00 |
+| EncodeConventional | Uniform_5M        | 103.441 ms | 1.3436 ms | 1.2568 ms | 103.713 ms |  1.00 |    0.02 |
+| EncodeFast         | Uniform_5M        |   3.917 ms | 0.0766 ms | 0.1321 ms |   3.908 ms |  0.04 |    0.00 |
 </details>
 
 <details>

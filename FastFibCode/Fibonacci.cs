@@ -7,11 +7,11 @@ public static class Fibonacci
 {
     private const int L = 2583;
     private static UShort2583 codes;
-    private static UInt2583 values16;
-    private static ULong2583 values32;
-    private static ULong2583 values48;
-    private static ULong2583 values64;
-    private static ULong2583 values80;
+    private static UInt2584 values16;
+    private static ULong2584 values32;
+    private static ULong2584 values48;
+    private static ULong2584 values64;
+    private static ULong2584 values80;
     private static UShort65536 valueByCode;
 
     static Fibonacci()
@@ -28,6 +28,12 @@ public static class Fibonacci
             values64[i] = FibonacciSlow.DecodeAsULong(((UInt128)code) << 64, false);
             values80[i] = FibonacciSlow.DecodeAsULong(((UInt128)code) << 80, false);
         }
+
+        values16[L] = uint.MaxValue;
+        values32[L] = ulong.MaxValue;
+        values48[L] = ulong.MaxValue;
+        values64[L] = ulong.MaxValue;
+        values80[L] = ulong.MaxValue;
 
         //all codes including the codes with several ones in a row
         for (uint code = 0; code <= ushort.MaxValue; code++)
@@ -48,7 +54,7 @@ public static class Fibonacci
             if (value >= F17)
             {
                 var i = (uint)Math.BigMul(k16, value, out var low) - 1 + (uint)(low >> 63);
-                if (i == L || values16[i] > value) i--;
+                i -= (values16[i] > value).ToByte();
                 value -= values16[i];
                 result |= (ulong)codes[i] << 16;
             }
@@ -76,7 +82,7 @@ public static class Fibonacci
             if (value >= F81)
             {
                 var i = (uint)Math.BigMul(k80, value, out var low) - 1 + (uint)(low >> 63);
-                if (i == L || values80[i] > value) i--;
+                i -= (values80[i] > value).ToByte();
                 value -= values80[i];
                 upper |= (ulong)codes[i] << (80 - 64);
             }
@@ -84,7 +90,7 @@ public static class Fibonacci
             if (value >= F65)
             {
                 var i = (uint)Math.BigMul(k64, value, out var low) - 1 + (uint)(low >> 63);
-                if (i == L || values64[i] > value) i--;
+                i -= (values64[i] > value).ToByte();
                 value -= values64[i];
                 upper |= codes[i];
             }
@@ -92,7 +98,7 @@ public static class Fibonacci
             if (value >= F49)
             {
                 var i = (uint)Math.BigMul(k48, value, out var low) - 1 + (uint)(low >> 63);
-                if (i == L || values48[i] > value) i--;
+                i -= (values48[i] > value).ToByte();
                 value -= values48[i];
                 lower |= (ulong)codes[i] << 48;
             }
@@ -101,7 +107,7 @@ public static class Fibonacci
         if (value >= F33)
         {
             var i = (uint)Math.BigMul(k32, value, out var low) - 1 + (uint)(low >> 63);
-            if (i == L || values32[i] > value) i--;
+            i -= (values32[i] > value).ToByte();
             value -= values32[i];
             lower |= (ulong)codes[i] << 32;
         }
@@ -109,7 +115,7 @@ public static class Fibonacci
         if (value >= F17)
         {
             var i = (uint)Math.BigMul(k16, value, out var low) - 1 + (uint)(low >> 63);
-            if (i == L || values16[i] > value) i--;
+            i -= (values16[i] > value).ToByte();
             value -= values16[i];
             lower |= (ulong)codes[i] << 16;
         }
@@ -130,7 +136,7 @@ public static class Fibonacci
         if (v >= F33)
         {
             var i = (uint)Math.BigMul(k32, v, out var low) - 1 + (uint)(low >> 63);
-            if (i == L || values32[i] > v) i--;
+            i -= (values32[i] > v).ToByte();
             v -= (uint)values32[i];
             result |= (ulong)codes[i] << 32;
         }
@@ -138,7 +144,7 @@ public static class Fibonacci
         if (v >= F17)
         {
             var i = (uint)Math.BigMul(k16, v, out var low) - 1 + (uint)(low >> 63);
-            if (i == L || values16[i] > v) i--;
+            i -= (values16[i] > v).ToByte();
             v -= values16[i];
             result |= (ulong)codes[i] << 16;
         }
@@ -160,7 +166,7 @@ public static class Fibonacci
         if (v >= F17)
         {
             var i = (uint)Math.BigMul(k16, v, out var low) - 1 + (uint)(low >> 63);
-            if (i == L || values16[i] > v) i--;
+            i -= (values16[i] > v).ToByte();
             v -= (ushort)values16[i];
             result |= (uint)codes[i] << 16;
         }
@@ -242,9 +248,9 @@ public static class Fibonacci
         }
     }
 
-    private unsafe struct UInt2583
+    private unsafe struct UInt2584
     {
-        public fixed uint P[2583];
+        public fixed uint P[2584];
         public ref uint this[uint index]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -252,9 +258,9 @@ public static class Fibonacci
         }
     }
 
-    private unsafe struct ULong2583
+    private unsafe struct ULong2584
     {
-        public fixed ulong P[2583];
+        public fixed ulong P[2584];
         public ref ulong this[uint index]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]

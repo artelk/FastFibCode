@@ -1,6 +1,6 @@
 # FastFibCode
 Ultra-fast [Fibonacci encoding/decoding](https://en.wikipedia.org/wiki/Fibonacci_coding) methods.
-The implementation is based on the [Fast Fibonacci Encoding Algorithm](https://ceur-ws.org/Vol-567/paper14.pdf) and the [The Fast Fibonacci Decompression Algorithm](https://arxiv.org/pdf/0712.0811), with additional optimizations to achieve even better performance. Encoding is **5–20** times faster than the conventional algorithm, and decoding is **10–30** times faster (depending on the value distribution).
+The implementation is based on the [Fast Fibonacci Encoding Algorithm](https://ceur-ws.org/Vol-567/paper14.pdf) and the [The Fast Fibonacci Decompression Algorithm](https://arxiv.org/pdf/0712.0811), with additional optimizations to achieve even better performance. It is **10–30** times faster than the conventional algorithm (depending on the value distribution).
 
 # Basic usage
 

@@ -13,4 +13,7 @@ internal static class Utils
             ? (pair.Item2, pair.Item1)
             : (pair.Item1, pair.Item2);
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static byte ToByte(this bool value) => Unsafe.BitCast<bool, byte>(value);
 }
