@@ -47,9 +47,17 @@ public static class Fibonacci
     {
         value++;
 
-        if (value < F33)
+        if (value < F49)
         {
             ulong result = 0;
+
+            if (value >= F33)
+            {
+                var i = (uint)Math.BigMul(k32, value, out var low) - 1 + (uint)(low >> 63);
+                i -= (values32[i] > value).ToByte();
+                value -= values32[i];
+                result |= (ulong)codes[i] << 32;
+            }
 
             if (value >= F17)
             {
@@ -77,31 +85,28 @@ public static class Fibonacci
 
         // see https://ceur-ws.org/Vol-567/paper14.pdf for details
         // 1/psi^shift numbers are precalculated for every segment and stored as long numbers after multiplication by 2^64
+        if (value >= F81)
+        {
+            var i = (uint)Math.BigMul(k80, value, out var low) - 1 + (uint)(low >> 63);
+            i -= (values80[i] > value).ToByte();
+            value -= values80[i];
+            upper |= (ulong)codes[i] << (80 - 64);
+        }
+
+        if (value >= F65)
+        {
+            var i = (uint)Math.BigMul(k64, value, out var low) - 1 + (uint)(low >> 63);
+            i -= (values64[i] > value).ToByte();
+            value -= values64[i];
+            upper |= codes[i];
+        }
+
         if (value >= F49)
         {
-            if (value >= F81)
-            {
-                var i = (uint)Math.BigMul(k80, value, out var low) - 1 + (uint)(low >> 63);
-                i -= (values80[i] > value).ToByte();
-                value -= values80[i];
-                upper |= (ulong)codes[i] << (80 - 64);
-            }
-
-            if (value >= F65)
-            {
-                var i = (uint)Math.BigMul(k64, value, out var low) - 1 + (uint)(low >> 63);
-                i -= (values64[i] > value).ToByte();
-                value -= values64[i];
-                upper |= codes[i];
-            }
-
-            if (value >= F49)
-            {
-                var i = (uint)Math.BigMul(k48, value, out var low) - 1 + (uint)(low >> 63);
-                i -= (values48[i] > value).ToByte();
-                value -= values48[i];
-                lower |= (ulong)codes[i] << 48;
-            }
+            var i = (uint)Math.BigMul(k48, value, out var low) - 1 + (uint)(low >> 63);
+            i -= (values48[i] > value).ToByte();
+            value -= values48[i];
+            lower |= (ulong)codes[i] << 48;
         }
 
         if (value >= F33)
