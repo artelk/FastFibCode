@@ -4,12 +4,12 @@
 		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<Title>Ultra-fast Fibonacci encoding/decoding</Title>
-		<Version>1.2.5</Version>
+		<Version>1.2.6</Version>
 		<Authors>Artem Elkin</Authors>
 		<Description>Ultra-fast Fibonacci encoding/decoding methods. It is 10–30 times faster than the conventional algorithm!</Description>
 		<PackageProjectUrl>https://github.com/artelk/FastFibCode</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/artelk/FastFibCode.git</RepositoryUrl>
-		<PackageTags>fibonacci-coding;compression;universal-code;prefix-code;variable-length</PackageTags>
+		<PackageTags>fibonacci-coding;fibonacci;coding;encoding;compression;universal-code;prefix-code;variable-length</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<IncludeSymbols>False</IncludeSymbols>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>

@@ -67,12 +67,10 @@ internal static class FibonacciSlow
         maxIndex = Math.Min(maxIndex, 91);
         for (int i = 0; i <= maxIndex; i++)
         {
-            if (code == 0) break;
             var f = F[i];
             if ((code & (UInt128.One << i)) != 0)
             {
                 result += f;
-                code -= UInt128.One << i;
                 i++; // cannot have two ones in a row
             }
         }
@@ -87,12 +85,10 @@ internal static class FibonacciSlow
         maxIndex = Math.Min(maxIndex, 45);
         for (int i = 0; i <= maxIndex; i++)
         {
-            if (code == 0) break;
             var f = (uint)F[i];
             if ((code & (1UL << i)) != 0)
             {
                 result += f;
-                code -= 1UL << i;
                 i++; // cannot have two ones in a row
             }
         }

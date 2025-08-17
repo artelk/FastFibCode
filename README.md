@@ -83,12 +83,10 @@ uint DecodeAsUInt(ulong code, bool decrement)
     maxIndex = Math.Min(maxIndex, 45);
     for (int i = 0; i <= maxIndex; i++)
     {
-        if (code == 0) break;
         var f = (uint)F[i];
         if ((code & (1UL << i)) != 0)
         {
             result += f;
-            code -= 1UL << i;
             i++;
         }
     }
@@ -149,30 +147,30 @@ Intel Core i7-6700HQ CPU 2.60GHz (Skylake), 1 CPU, 8 logical and 4 physical core
 ```
 | Method             | Distribution      | Mean       | Error     | StdDev    | Ratio | RatioSD |
 |------------------- |------------------ |-----------:|----------:|----------:|------:|--------:|
-| DecodeConventional | FoldedNormal_100  |  37.105 ms | 0.6784 ms | 0.6014 ms |  1.00 |    0.02 |
-| DecodeFast         | FoldedNormal_100  |   1.792 ms | 0.0395 ms | 0.1164 ms |  0.05 |    0.00 |
-| DecodeConventional | FoldedNormal_1K   |  51.609 ms | 0.9845 ms | 1.0110 ms |  1.00 |    0.03 |
-| DecodeFast         | FoldedNormal_1K   |   3.030 ms | 0.0603 ms | 0.1190 ms |  0.06 |    0.00 |
-| DecodeConventional | FoldedNormal_10K  |  64.725 ms | 1.2735 ms | 1.2507 ms |  1.00 |    0.03 |
-| DecodeFast         | FoldedNormal_10K  |   3.504 ms | 0.0662 ms | 0.1522 ms |  0.05 |    0.00 |
-| DecodeConventional | FoldedNormal_100K |  79.719 ms | 1.4444 ms | 1.2805 ms |  1.00 |    0.02 |
-| DecodeFast         | FoldedNormal_100K |   2.570 ms | 0.0506 ms | 0.0950 ms |  0.03 |    0.00 |
-| DecodeConventional | FoldedNormal_1M   |  92.603 ms | 1.7892 ms | 1.5860 ms |  1.00 |    0.02 |
-| DecodeFast         | FoldedNormal_1M   |   2.638 ms | 0.0527 ms | 0.1028 ms |  0.03 |    0.00 |
-| DecodeConventional | FoldedNormal_10M  | 107.962 ms | 1.3682 ms | 1.2798 ms |  1.00 |    0.02 |
-| DecodeFast         | FoldedNormal_10M  |   5.363 ms | 0.1061 ms | 0.1180 ms |  0.05 |    0.00 |
-| DecodeConventional | Exponential_100   |  35.046 ms | 0.6799 ms | 0.9531 ms |  1.00 |    0.04 |
-| DecodeFast         | Exponential_100   |   1.790 ms | 0.0502 ms | 0.1431 ms |  0.05 |    0.00 |
-| DecodeConventional | Exponential_1K    |  50.208 ms | 0.7323 ms | 0.6115 ms |  1.00 |    0.02 |
-| DecodeFast         | Exponential_1K    |   2.622 ms | 0.0512 ms | 0.1237 ms |  0.05 |    0.00 |
-| DecodeConventional | Exponential_10K   |  63.904 ms | 1.2136 ms | 1.1352 ms |  1.00 |    0.02 |
-| DecodeFast         | Exponential_10K   |   4.355 ms | 0.0871 ms | 0.1069 ms |  0.07 |    0.00 |
-| DecodeConventional | Exponential_100K  |  77.443 ms | 1.3332 ms | 1.1133 ms |  1.00 |    0.02 |
-| DecodeFast         | Exponential_100K  |   2.735 ms | 0.0544 ms | 0.1324 ms |  0.04 |    0.00 |
-| DecodeConventional | Exponential_1M    |  91.375 ms | 1.8214 ms | 2.6123 ms |  1.00 |    0.04 |
-| DecodeFast         | Exponential_1M    |   2.643 ms | 0.0527 ms | 0.1076 ms |  0.03 |    0.00 |
-| DecodeConventional | Exponential_10M   | 104.419 ms | 1.6462 ms | 1.5398 ms |  1.00 |    0.02 |
-| DecodeFast         | Exponential_10M   |   6.494 ms | 0.1272 ms | 0.1824 ms |  0.06 |    0.00 |
-| DecodeConventional | Uniform_5M        |  96.945 ms | 1.7427 ms | 1.6301 ms |  1.00 |    0.02 |
-| DecodeFast         | Uniform_5M        |   2.589 ms | 0.0517 ms | 0.1371 ms |  0.03 |    0.00 |
+| DecodeConventional | FoldedNormal_100  | 35.279 ms | 0.3204 ms | 0.2676 ms |  1.00 |    0.01 |
+| DecodeFast         | FoldedNormal_100  |  1.813 ms | 0.0450 ms | 0.1319 ms |  0.05 |    0.00 |
+| DecodeConventional | FoldedNormal_1K   | 48.935 ms | 0.9005 ms | 0.7520 ms |  1.00 |    0.02 |
+| DecodeFast         | FoldedNormal_1K   |  3.008 ms | 0.0599 ms | 0.0531 ms |  0.06 |    0.00 |
+| DecodeConventional | FoldedNormal_10K  | 61.887 ms | 1.1508 ms | 1.1302 ms |  1.00 |    0.03 |
+| DecodeFast         | FoldedNormal_10K  |  3.595 ms | 0.0717 ms | 0.1095 ms |  0.06 |    0.00 |
+| DecodeConventional | FoldedNormal_100K | 74.222 ms | 1.4658 ms | 1.4396 ms |  1.00 |    0.03 |
+| DecodeFast         | FoldedNormal_100K |  2.686 ms | 0.0528 ms | 0.1191 ms |  0.04 |    0.00 |
+| DecodeConventional | FoldedNormal_1M   | 86.271 ms | 1.3631 ms | 1.2750 ms |  1.00 |    0.02 |
+| DecodeFast         | FoldedNormal_1M   |  2.574 ms | 0.0510 ms | 0.0893 ms |  0.03 |    0.00 |
+| DecodeConventional | FoldedNormal_10M  | 99.897 ms | 1.5131 ms | 1.3413 ms |  1.00 |    0.02 |
+| DecodeFast         | FoldedNormal_10M  |  5.395 ms | 0.1069 ms | 0.1664 ms |  0.05 |    0.00 |
+| DecodeConventional | Exponential_100   | 31.101 ms | 0.6039 ms | 0.7637 ms |  1.00 |    0.03 |
+| DecodeFast         | Exponential_100   |  1.773 ms | 0.0384 ms | 0.1127 ms |  0.06 |    0.00 |
+| DecodeConventional | Exponential_1K    | 46.007 ms | 0.9017 ms | 0.9260 ms |  1.00 |    0.03 |
+| DecodeFast         | Exponential_1K    |  2.551 ms | 0.0508 ms | 0.1135 ms |  0.06 |    0.00 |
+| DecodeConventional | Exponential_10K   | 59.651 ms | 0.9695 ms | 0.8595 ms |  1.00 |    0.02 |
+| DecodeFast         | Exponential_10K   |  4.371 ms | 0.0815 ms | 0.0800 ms |  0.07 |    0.00 |
+| DecodeConventional | Exponential_100K  | 72.305 ms | 0.9786 ms | 0.7640 ms |  1.00 |    0.01 |
+| DecodeFast         | Exponential_100K  |  2.782 ms | 0.0553 ms | 0.0925 ms |  0.04 |    0.00 |
+| DecodeConventional | Exponential_1M    | 85.477 ms | 1.5396 ms | 1.4402 ms |  1.00 |    0.02 |
+| DecodeFast         | Exponential_1M    |  2.621 ms | 0.0514 ms | 0.0815 ms |  0.03 |    0.00 |
+| DecodeConventional | Exponential_10M   | 96.975 ms | 1.9232 ms | 1.7990 ms |  1.00 |    0.03 |
+| DecodeFast         | Exponential_10M   |  6.630 ms | 0.1161 ms | 0.1192 ms |  0.07 |    0.00 |
+| DecodeConventional | Uniform_5M        | 91.944 ms | 1.7965 ms | 2.2063 ms |  1.00 |    0.03 |
+| DecodeFast         | Uniform_5M        |  2.635 ms | 0.0519 ms | 0.0881 ms |  0.03 |    0.00 |
 </details>
